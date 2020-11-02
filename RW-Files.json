@@ -1,0 +1,378 @@
+{
+    "name": "RW-Files",
+    "description": "",
+    "rootActivity": {
+        "edges": [
+            {
+                "to": "Read Property File",
+                "from": "Git Clone",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "4973aa26674cb122bf3704359a3673",
+                "from": "Echo Extracted Data from Env.txt",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Delete Files and Directories",
+                "type": "ALWAYS",
+                "value": ""
+            },
+            {
+                "to": "printout env.txt after appending PROD data",
+                "from": "Append text to a file",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Append text to a file",
+                "from": "Set Process Request Property",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Git Clone",
+                "from": "Delete Files and Directories",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "4973aa26674cb122bf3704359a3673",
+                "from": "printout env.txt after appending PROD data",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Set Process Request Property",
+                "from": "Read Property File",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Echo Extracted Data from Env.txt",
+                "from": "Set Process Request Property",
+                "type": "SUCCESS",
+                "value": ""
+            }
+        ],
+        "offsets": [
+            {
+                "name": "Echo Extracted Data from Env.txt",
+                "x": -440.6891396604939,
+                "y": 790,
+                "h": 110,
+                "w": 540
+            },
+            {
+                "name": "4973aa26674cb122bf3704359a3673",
+                "x": -98.42217951645091,
+                "y": 1110,
+                "h": 100,
+                "w": 160
+            },
+            {
+                "name": "Append text to a file",
+                "x": 129.31086033950612,
+                "y": 790,
+                "h": 110,
+                "w": 440
+            },
+            {
+                "name": "Set Process Request Property",
+                "x": -204.0649112654321,
+                "y": 630,
+                "h": 110,
+                "w": 580
+            },
+            {
+                "name": "Delete Files and Directories",
+                "x": -205,
+                "y": 150,
+                "h": 110,
+                "w": 560
+            },
+            {
+                "name": "Read Property File",
+                "x": -139.45167824074076,
+                "y": 470,
+                "h": 110,
+                "w": 440
+            },
+            {
+                "name": "printout env.txt after appending PROD data",
+                "x": -170.3333809935017,
+                "y": 950,
+                "h": 110,
+                "w": 670
+            },
+            {
+                "name": "Git Clone",
+                "x": -43.150559413580254,
+                "y": 310,
+                "h": 110,
+                "w": 240
+            },
+            {
+                "name": "Append PROD Credential Details",
+                "x": -440.6891396604939,
+                "y": 1220,
+                "h": 110,
+                "w": 540
+            }
+        ],
+        "layoutMode": "auto",
+        "type": "graph",
+        "name": "417b7cac-cab5-4746-a746-f0f75ed9a3d0",
+        "children": [
+            {
+                "type": "finish",
+                "name": "4973aa26674cb122bf3704359a3673",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "workingDir": "${p:resource\/work.dir}\/${p:process.name}\/ucd-read-property-file",
+                "pluginVersion": 74,
+                "commandName": "Read Property File",
+                "pluginName": "File Utils",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "dir": "",
+                    "file": "env.txt"
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "Read Property File",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "workingDir": "${p:resource\/work.dir}\/${p:process.name}\/ucd-read-property-file",
+                "pluginVersion": 74,
+                "commandName": "Create File",
+                "pluginName": "File Utils",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "file": "env.txt",
+                    "contents": "username = ${APIM_SIT_URL}\nDemo Hello!",
+                    "overwrite": "true",
+                    "customEncoding": ""
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "Append PROD Credential Details",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "pluginVersion": 9,
+                "commandName": "Shell",
+                "pluginName": "Shell",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "directoryOffset": ".",
+                    "shellInterpreter": "",
+                    "scriptBody": "pwd\nls\n\ncat .\/ucd-read-property-file\/env.txt",
+                    "runAsDaemon": "false",
+                    "outputFile": ""
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "printout env.txt after appending PROD data",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "pluginVersion": 8,
+                "commandName": "Set Process Request Property",
+                "pluginName": "UrbanCode Deploy Processes",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "propertyName": "APIM_SIT_URL",
+                    "propertyValue": "${Read Property File\/APIM_SIT_URL}",
+                    "secureValue": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keypiip|kkqhTIyHOjunXertoHb9fw==|v2znVtcKiDz6717+WT+ULQ==}",
+                    "processRequestId": "${p:request.id}"
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "Set Process Request Property",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "pluginVersion": 9,
+                "commandName": "Shell",
+                "pluginName": "Shell",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "directoryOffset": ".",
+                    "shellInterpreter": "",
+                    "scriptBody": "git clone --single-branch --branch demo https:\/\/github.com\/MohammedFadin\/ucd-read-property-file.git\nls\npwd",
+                    "runAsDaemon": "false",
+                    "outputFile": ""
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "Git Clone",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "pluginVersion": 9,
+                "commandName": "Shell",
+                "pluginName": "Shell",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "directoryOffset": ".",
+                    "shellInterpreter": "",
+                    "scriptBody": "echo \"SIT URL: ${Read Property File\/APIM_SIT_URL}\" ",
+                    "runAsDaemon": "false",
+                    "outputFile": ""
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "Echo Extracted Data from Env.txt",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "pluginVersion": 74,
+                "commandName": "Delete Files and Directories",
+                "pluginName": "File Utils",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "baseDir": ".\/",
+                    "includes": "**\/*",
+                    "excludes": "",
+                    "followSymlinks": "false",
+                    "caseSensitive": "true"
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "Delete Files and Directories",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": false,
+                "impersonationUseSudo": false,
+                "pluginVersion": 4,
+                "commandName": "Append text to a file",
+                "pluginName": "Text Utils",
+                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                "properties": {
+                    "filePath": ".\/ucd-read-property-file\/env.txt",
+                    "text": "###### Injected by UCD using Request ID: ${request.id} and Triggered by {request.user.displayName} ######\r\nAPIM_PROD_URL = https:\/\/apiprod.ap.co.ae\r\nAPIM_PROD_USR = PRODAdmin\r\nAPIM_PROD_PAS = admin1122233",
+                    "startOnNewLine": "true"
+                },
+                "cachedAuthTokenRestriction": {
+                    "name": "System Default",
+                    "description": "Used by default for any plugin steps without a specified token restriction",
+                    "restrictions": [{
+                        "verb": "ALL",
+                        "url": "\/*"
+                    }]
+                },
+                "type": "plugin",
+                "name": "Append text to a file",
+                "children": []
+            }
+        ]
+    },
+    "properties": [
+        {
+            "name": "contextType",
+            "value": "Resource",
+            "description": "",
+            "secure": false
+        },
+        {
+            "name": "workingDir",
+            "value": "${p:resource\/work.dir}\/${p:process.name}",
+            "description": "",
+            "secure": false
+        },
+        {
+            "name": "defaultResourceId",
+            "value": "17351722-5276-c400-f391-4cf5d230f09f",
+            "description": "",
+            "secure": false
+        }
+    ],
+    "propDefs": [],
+    "teamMappings": [],
+    "linkedProcesses": []
+}
